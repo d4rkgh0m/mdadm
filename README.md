@@ -18,6 +18,7 @@ sudo mdadm --zero-superblock --force /dev/sd{b,c,d,e,f,g}
 sudo mdadm --create --verbose /dev/md0 -l 10 -n 6 /dev/sd{b,c,d,e,f,g}
 ## Проверим, что RAID собрался корректно
 cat /proc/mdstat
+
 sudo mdadm -D /dev/md0
 ## Проверяем информацию о RAID
 sudo mdadm --detail --scan --verbose
