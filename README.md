@@ -5,6 +5,7 @@
 :size => 250,
 :port => 5
 },
+
 :sata6 => {
 :dfile => './sata6.vdi',
 :size => 250,
@@ -24,7 +25,9 @@ sudo mdadm -D /dev/md0
 sudo mdadm --detail --scan --verbose
 ## Создаем файл конфигурации для RAID и вносим данные
 sudo touch /etc/mdadm/mdadm.conf
+
 sudo echo "DEVICE partitions" > /etc/mdadm/mdadm.conf
+
 sudo mdadm --detail --scan --verbose | awk '/ARRAY/ {print}' >> /etc/mdadm/mdadm.conf
 ## Удаляем диск из RAID
 sudo mdadm /dev/md0 --fail /dev/sde
